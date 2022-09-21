@@ -4,11 +4,11 @@ ____
 
 Запустите кубернетес локально, используя `k3s` или `minikube` на свой выбор. Добейтесь стабильной работы всех системных контейнеров.
 В качестве ответа пришлите скриншот результата выполнения команды 
-``sh
+```sh
 kubectl get po -n kube-system
-``
+```
 
-![task1 screen](/assets/images/dz_k8s_6-5_screen1.png "kubectl get po -n kube-system")
+![task1 screen](https://github.com/paive-media/netology_dz_6-5/blob/main/dz_k8s_6-5_screen1.png "kubectl get po -n kube-system")
 
 
 
@@ -51,7 +51,9 @@ spec:
 Запустите Deployment в своем кластере и добейтесь его стабильной работы.
 Приведите ответ в виде получившегося файла.
 
-` **nano dz6-5_dep.yaml** `
+```sh 
+nano dz6-5_dep.yaml
+```
 ```yaml
 ---
 apiVersion: apps/v1
@@ -80,7 +82,10 @@ spec:
             - containerPort: 6379
 
 ```
-` **nano dz6-5_srv.yaml** `
+
+```sh
+nano dz6-5_srv.yaml
+```
 ```yaml
 ---
 apiVersion: v1
@@ -100,15 +105,14 @@ spec:
 ```
 
 ```sh
-kubectl apply -f dz6-5_dep.yaml
-kubectl apply -f dz6-5_srv.yaml
+kubectl apply -f dz6-5_dep.yaml -f dz6-5_srv.yaml
 
 kubectl get po
 kubectl get service
 
 ```
 
-![task2 screen](/assets/images/dz_k8s_6-5_screen2.png "kubectl redis dep+srv")
+![task2 screen](https://github.com/paive-media/netology_dz_6-5/blob/main/dz_k8s_6-5_screen2.png "kubectl redis dep+srv")
 
 
 # Задание 3.
