@@ -40,6 +40,39 @@ kube-flannel-ds-jr5ng   1/1     Running   4 (117s ago)   5m40s
 никак не стартует контейнет **core-dns-…**
 *прошу помощи, куда копать?*
 
+При помощи правки конфига контроллера и демона-докера `/etc/docker/daemon.json` 
+```sh
+nano /etc/kubernetes/manifests/kube-controller-manager.yaml
+```
+```yaml
+…
+  containers:
+  - command:
+    - kube-controller-manager
+!    - --allocate-node-cidrs=true
+    - --authentication-kubeconfig=/etc/kubernetes/controller-manager.conf
+    - --authorization-kubeconfig=/etc/kubernetes/controller-manager.conf
+    - --bind-address=127.0.0.1
+!    - --cluster-cidr=10.244.0.0/16
+    - --client-ca-file=/etc/kubernetes/pki/ca.crt
+    - --cluster-name=kubernetes
+```
+```sh
+systemctl restart kubelet
+```
+[источник](https://github.com/flannel-io/flannel/issues/728#issuecomment-425701657)
+
+
+Получилось запустить кластер с сетевым плагином `flannel`
+```sh
+nano /etc/kubernetes/manifests/kube-controller-manager.yaml
+```
+
+```sh
+kubectl get po --all-namespaces
+```
+![task1 screen2](https://github.com/paive-media/netology_dz_6-5/blob/main/dz_k8s_6-6_screen2.png "kubectl get po -all-namespaces OK")
+
 
 ---
 
