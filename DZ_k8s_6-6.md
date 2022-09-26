@@ -112,3 +112,93 @@ spec:
 1. Запустите чарт в своем кластере и добейтесь его стабильной работы.
 
 *Приведите вывод команды `helm get manifest <имя_релиза>` в качестве ответа*
+
+```sh
+
+
+helm create mychart
+cd mychart
+rm -rf templates/*
+
+
+rm Chart.yaml && nano Chart.yaml
+--- 
+apiVersion: v2
+name: redis
+description: A Helm chart for redis, test-chart for dz6-6
+version: 0.1.0
+type: application
+maintainers:
+  - name: Ivan Artemiev
+appVersion: 1.0.0
+
+
+
+
+
+rm templates/dz6-5_dep.yaml && nano templates/dz6-5_dep.yaml
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: {{ .Chart.Name }}-dep
+  labels: 
+    app: {{ .Values.image.name }}
+spec: 
+  replicas: {{ .Values.replicaCount }}
+  selector: 
+    matchLabels: 
+      app: {{ .Values.image.name }}
+  template: 
+    metadata: 
+      labels: 
+        app: {{ .Values.image.name }}
+    spec: 
+      containers: 
+        - name: master
+          env: 
+            - name: REDIS_PASSWORD
+              value: {{ .Values.config.password }}
+          image: {{ .Values.image.repository }}/{{ .Values.image.name }}{{ .Values.image.version }}
+          ports: 
+            - containerPort: {{ .Values.config.port }}
+
+
+
+rm templates/dz6-5_srv.yaml && nano templates/dz6-5_srv.yaml
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: {{ .Chart.Name }}-srv
+  labels:
+    app: {{ .Values.image.name }}
+spec: 
+  ports: 
+    - 
+      port: {{ .Values.config.port }}
+      targetPort: {{ .Values.config.targetPort }}
+  selector: 
+    app: {{ .Values.image.name }}
+
+
+rm values.yaml && nano values.yaml  
+---
+replicaCount: 1
+    
+image:
+  repository: "bitnami"
+  name: "redis"
+  version: ""
+
+config:
+  port: 6379
+  targetPort: 6379
+  password: password123
+
+```
+
+![task1 screen3](https://github.com/paive-media/netology_dz_6-5/blob/main/dz_k8s_6-6_screen3.png "helm deployed OK")
+![task1 screen4](https://github.com/paive-media/netology_dz_6-5/blob/main/dz_k8s_6-6_screen4.png "helm chart manifest OK")
+
+
