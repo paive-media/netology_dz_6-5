@@ -127,8 +127,8 @@ export YC_FOLDER_ID=$(yc config get folder-id)
 Делал по [инструкции](https://cloud.yandex.ru/docs/tutorials/infrastructure-management/terraform-quickstart)
 
 **Файлы:**
-[main.tf](https://github.com/paive-media/netology_dz_6-5/terraform/main.tf)
-[meta.txt](https://github.com/paive-media/netology_dz_6-5/terraform/meta.txt)
+[main.tf](terraform/main.tf)
+[meta.txt](terraform/meta.txt)
 
 Внутри папки `dz7-3/terraform`
 ```sh
@@ -147,8 +147,8 @@ terraform apply "tf_plan"
 
 **Файлы:**
 [ansible.cfg](ansible/ansible.cfg)
-[inventory.ini](https://github.com/paive-media/netology_dz_6-5/ansible/inventory.ini)
-[playbook1_nginx2tf.yaml](https://github.com/paive-media/netology_dz_6-5/ansible/playbook1_nginx2tf.yaml)
+[inventory.ini](ansible/inventory.ini)
+[playbook1_nginx2tf.yaml](ansible/playbook1_nginx2tf.yaml)
 
 Внутри папки `dz7-3/terraform/ansible`
 ```sh
