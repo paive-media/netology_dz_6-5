@@ -1,0 +1,109 @@
+# Домашнее задание к занятию "7.3 Подъем инфраструктуры в Яндекс.Облаке"
+
+ ---
+
+### Задание 1. 
+
+От заказчика получено задание: при помощи Terraform и Ansible, собрать виртуальную инфраструктуру и развернуть на ней Web-ресурс. 
+
+В инфраструктуре нужна одна машина с ПО ОС Linux, 2 ядрами и 2 Гигабайтами оперативной памяти. 
+
+Требуется установить nginx, залить при помощи ansible конфигурационные файлы nginx и Web-ресурса. 
+
+Для выполнения этого задания требуется сгенирировать ssh ключ командой ssh-kengen. Добавить в конфигурацию terraform ключ в поле:
+
+ metadata = {
+    user-data = "${file("./meta.txt")}"
+  }
+ 
+ В файле meta прописать: 
+ ```
+ users:
+  - name: user
+    groups: sudo
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh-authorized-keys:
+      - ssh-rsa  xxx
+```
+
+где xxx - это ключ из файла /home/"name_user"/.ssh/id_rsa.pub.
+Примерная конфигурация terraform:
+```
+terraform {
+  required_providers {
+    yandex = {
+      source = "yandex-cloud/yandex"
+    }
+  }
+}
+
+provider "yandex" {
+  token     = "xxx"
+  cloud_id  = "xxx"
+  folder_id = "xxx"
+  zone      = "ru-central1-a"
+}
+
+resource "yandex_compute_instance" "vm-1" {
+  name = "terraform1"
+
+  resources {
+    cores  = 2
+    memory = 2
+  }
+
+  boot_disk {
+    initialize_params {
+      image_id = "fd87kbts7j40q5b9rpjr"
+    }
+  }
+
+  network_interface {
+    subnet_id = yandex_vpc_subnet.subnet-1.id
+    nat       = true
+  }
+  
+  metadata = {
+    user-data = "${file("./meta.txt")}"
+  }
+
+}
+resource "yandex_vpc_network" "network-1" {
+  name = "network1"
+}
+
+resource "yandex_vpc_subnet" "subnet-1" {
+  name           = "subnet1"
+  zone           = "ru-central1-b"
+  network_id     = yandex_vpc_network.network-1.id
+  v4_cidr_blocks = ["192.168.10.0/24"]
+}
+
+output "internal_ip_address_vm_1" {
+  value = yandex_compute_instance.vm-1.network_interface.0.ip_address
+}
+output "external_ip_address_vm_1" {
+  value = yandex_compute_instance.vm-1.network_interface.0.nat_ip_address
+}
+```
+В конфигурации ansible:
+1) указать внешний ip адресс машины ( полученный из output external_ip_address_vm_1)  в файл hosts
+2) указать доступ в файле plabook *yml поля hosts
+```
+- hosts: 138.68.85.196
+  remote_user: user
+  tasks:
+    - service:
+        name: nginx
+        state: started
+      become: yes
+      become_method: sudo
+```
+
+Провести тестирование. 
+
+
+*Прислать скан скриптов, скан выполненного проекта.*
+
+---
