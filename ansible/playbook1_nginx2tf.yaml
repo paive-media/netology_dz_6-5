@@ -1,5 +1,5 @@
 ---
-- name: The first playbook by netology dz7-4
+- name: Play for dz7-4
   hosts: yac_tf
   tasks:
 
