@@ -66,6 +66,9 @@ terraform version
 ```
 
 
+![task4 screen1-1](https://github.com/paive-media/netology_dz_6-5/blob/main/dz_tf_7-2_screen1-1.png "terraform install ok")
+![task4 screen1-2](https://github.com/paive-media/netology_dz_6-5/blob/main/dz_tf_7-2_screen1-2.png "terraform install ok")
+
  
 ---
 
