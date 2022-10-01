@@ -72,12 +72,19 @@ terraform version
 Перечислите основные функции, которые могут использоваться в terraform.
 
 `terraform init`
+
 `terraform validate`
+
 `terraform fmt`
+
 `terraform plan`
+
 `terraform apply`
+
 `terraform output`
+
 `terraform destroy`  или `terraform apply --destroy`
+
 
  
 
