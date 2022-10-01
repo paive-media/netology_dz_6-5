@@ -55,7 +55,9 @@ cd /usr/local/src && curl -O https://releases.hashicorp.com/terraform/1.3.0/terr
 wget https://releases.hashicorp.com/terraform/1.3.0/terraform_1.3.0_linux_amd64.zip
 ```
 
+
 Обновил go до версии 1.19
+
 Установил с зеркала Яндекс.Облака
 ```sh
 wget https://hashicorp-releases.yandexcloud.net/terraform/1.3.1/terraform_1.3.1_linux_amd64.zip
