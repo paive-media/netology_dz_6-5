@@ -146,7 +146,7 @@ terraform apply "tf_plan"
 #### Этап 3 - Донастройка созданной ВМ при помощи Ansible
 
 **Файлы:**
-[ansible.cfg](https://github.com/paive-media/netology_dz_6-5/ansible/ansible.cfg)
+[ansible.cfg](ansible/ansible.cfg)
 [inventory.ini](https://github.com/paive-media/netology_dz_6-5/ansible/inventory.ini)
 [playbook1_nginx2tf.yaml](https://github.com/paive-media/netology_dz_6-5/ansible/playbook1_nginx2tf.yaml)
 
