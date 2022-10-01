@@ -108,7 +108,7 @@ output "external_ip_address_vm_1" {
 
 Делал по [инструкции](https://cloud.yandex.ru/docs/cli/quickstart#install)
 
-``sh
+```sh
 curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
 yc init
 yc config list
@@ -120,7 +120,7 @@ yc config set folder-id FOLDER_ID
 export YC_TOKEN=$(yc iam create-token)
 export YC_CLOUD_ID=$(yc config get cloud-id)
 export YC_FOLDER_ID=$(yc config get folder-id)
-``
+```
 
 #### Этап 2 - Подготовка Terraform внутри Яндекс.Облака
 
@@ -131,14 +131,15 @@ export YC_FOLDER_ID=$(yc config get folder-id)
 [meta.txt](https://github.com/paive-media/netology_dz_6-5/terraform/meta.txt)
 
 Внутри папки `dz7-3/terraform`
-``sh
+```sh
 terraform version
 terraform validate
 terrafomt fmt
 terraform plan
 terraform apply "tf_plan"
-``
+```
 ![task1 screen1-1](https://github.com/paive-media/netology_dz_6-5/blob/main/dz_tf_7-3_screen1-1.png "terraform@yac result begin")
+…
 ![task1 screen1-2](https://github.com/paive-media/netology_dz_6-5/blob/main/dz_tf_7-3_screen1-2.png "terraform@yac result end")
 
 
@@ -150,22 +151,22 @@ terraform apply "tf_plan"
 [playbook1_nginx2tf.yaml](https://github.com/paive-media/netology_dz_6-5/ansible/playbook1_nginx2tf.yaml)
 
 Внутри папки `dz7-3/terraform/ansible`
-``sh
+```sh
 sudo apt update
 sudo apt install ansible -y
 ansible --version
 ansible-playbook playbook1_nginx2tf.yaml --syntax-check
 ansible-playbook playbook1_nginx2tf.yaml
-``
+```
 ![task1 screen2](https://github.com/paive-media/netology_dz_6-5/blob/main/dz_tf_7-3_screen2.png "ansible playbook result")
 
 
 #### Этап 4 - Освобождение ресурсов Яндекс.Облака
 
 Внутри папки `dz7-3/terraform`
-``sh
+```sh
 terraform destoy
-``
+```
 
 
 ---
