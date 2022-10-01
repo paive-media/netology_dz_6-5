@@ -68,6 +68,13 @@ ansible yac_debs -m shell -a "cat /tmp/netology.txt"
 ansible yac_debs -m file -a "path=/tmp/netology.txt state=absent"
 ```
 
+![task4 screen1](https://github.com/paive-media/netology_dz_6-5/blob/main/dz_ans_7-1_screen4-1.png "ansible atop")
+![task4 screen2](https://github.com/paive-media/netology_dz_6-5/blob/main/dz_ans_7-1_screen4-2.png "ansible service status")
+![task4 screen3](https://github.com/paive-media/netology_dz_6-5/blob/main/dz_ans_7-1_screen4-3.png "ansible file create")
+![task4 screen4](https://github.com/paive-media/netology_dz_6-5/blob/main/dz_ans_7-1_screen4-4.png "ansible file read")
+![task4 screen5](https://github.com/paive-media/netology_dz_6-5/blob/main/dz_ans_7-1_screen4-5.png "ansible file remove")
+![task4 screen6](https://github.com/paive-media/netology_dz_6-5/blob/main/dz_ans_7-1_screen4-6.png "ansible file read error")
+
 
 ---
 
