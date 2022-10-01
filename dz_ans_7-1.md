@@ -12,7 +12,6 @@
 - легкое распространение описательных файлов/структур
 - помощь community 
 - возможное использование шаблонов, переменных, условных ветвлений
-- 
 
 ---
 
@@ -23,11 +22,16 @@
 3. Создайте файл инвентори. Предлагается использовать файл, размещенный в папке с проектом, а не файл инвентори по умолчанию.
 4. Проверьте доступность хостов с помощью модуля ping.
 
+**Файлы**
+[ansible.cfg](ansible71/ansible.cfg)
+[inventory.ini](ansible71/inventory.ini)
+
 ```sh
 ansible yac_debs -m ping --list-hosts
 ansible yac_debs -m ping
 ```
-
+![task2 screen1-1](https://github.com/paive-media/netology_dz_6-5/blob/main/dz_ans_7-1_screen1-1.png "ansible ping list")
+![task2 screen1-2](https://github.com/paive-media/netology_dz_6-5/blob/main/dz_ans_7-1_screen1-2.png "ansible ping")
 
  
 ---
