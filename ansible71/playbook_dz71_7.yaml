@@ -1,0 +1,11 @@
+---
+- name: Playbook 7 - install nginx & show stat
+  hosts: yac_debs
+
+  gather_facts: true
+
+  roles:
+    - role7/install-nginx
+
+  # handlers:
+  #  - role7/install-nginx/handlers/main.yml

@@ -1,0 +1,35 @@
+---
+- name: Playbook 6 - change MotD.2
+  hosts: yac_debs
+  gather_facts: no
+
+  vars:
+    newmsg0: "#!/bin/sh\n\n"
+    newmsg1: "uname -n\n"
+    newmsg2: "echo \"Current nat_ip is {{ ansible_host }}\"\n"
+    newmsg3: "\necho \"Have a nice day\"\n"
+
+  tasks:
+
+    - name: Change MotD - row1
+      copy:
+        content: "{{ newmsg0 }}{{ newmsg1 }}"
+        dest: /etc/update-motd.d/20-uname
+        mode: 0755
+
+    - name: Change MotD - row2
+      copy:
+        content: "{{ newmsg0 }}{{ newmsg2 }}"
+        dest: /etc/update-motd.d/24-nat-id
+        mode: 0755
+
+    - name: Change MotD - row3
+      copy:
+        content: "{{ newmsg0 }}{{ newmsg3 }}"
+        dest: /etc/update-motd.d/28-nice-day
+        mode: 0755
+
+    # - name: Reboot host
+    #   reboot:
+    #     reboot_timeout: 3
+

@@ -1,0 +1,20 @@
+---
+- name: Playbook 5.2 - install & launch tuned.service
+  hosts: yac_debs
+  gather_facts: no
+
+  tasks:
+
+    - name: Install tuned
+      apt:
+        name: tuned
+        update_cache: yes
+
+    - name: Reload daemon by tuned.service
+      systemd:
+        daemon_reload: yes
+
+    - name: Enable tuned.service 
+      systemd:
+        name: tuned
+        enabled: yes

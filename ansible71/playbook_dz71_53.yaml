@@ -1,0 +1,19 @@
+---
+- name: Playbook 5.3 - change MotD
+  hosts: yac_debs
+  gather_facts: no
+
+  vars:
+    newmsg: "#!/bin/sh\n\necho \"Hello Ivan\""
+
+  tasks:
+
+    - name: Change MotD
+      copy:
+        content: "{{ newmsg }}"
+        dest: /etc/update-motd.d/18-hello-ivan
+        mode: 0755
+
+    # - name: Reboot host
+    #   reboot:
+    #     reboot_timeout: 3

@@ -1,0 +1,31 @@
+---
+- name: Playbook 5.1 - download & unarchive
+  hosts: yac_debs
+  gather_facts: no
+
+  vars:
+    goversion: go1.19.linux-amd64
+
+  tasks:
+
+    #  - name: Get arch
+    #    get_url: 
+    #      url: https://golang.org/dl/{{ goversion }}.tar.gz
+    #      dest: /tmp/go/{{ goversion }}.tar.gz
+
+    #  - name: Extract contents from archive
+    #    unarchive:
+    #      src: /tmp/go/{{ goversion }}.tar.gz
+    #      dest: /tmp/go_unz
+
+    - name: Create dest dir for archive data
+      file:
+        path: /tmp/go_unz
+        state: directory
+        mode: '0755'
+
+    - name: Extract contents from remote archive
+      unarchive:
+        src: https://golang.org/dl/{{ goversion }}.tar.gz
+        dest: /tmp/go_unz
+        remote_src: yes
