@@ -23,8 +23,8 @@
 4. Проверьте доступность хостов с помощью модуля ping.
 
 **Файлы**
-[ansible.cfg](ansible71/ansible.cfg)
-[inventory.ini](ansible71/inventory.ini)
+- [ansible.cfg](ansible71/ansible.cfg)
+- [inventory.ini](ansible71/inventory.ini)
 
 ```sh
 ansible yac_debs -m ping --list-hosts
@@ -102,6 +102,7 @@ ansible yac_debs -m file -a "path=/tmp/netology.txt state=absent"
 ![task5 screen1](https://github.com/paive-media/netology_dz_6-5/blob/main/dz_ans_7-1_screen5-1.png "download & archiive")
 ![task5 screen2](https://github.com/paive-media/netology_dz_6-5/blob/main/dz_ans_7-1_screen5-2.png "install & launch")
 
+*специально указал скрин с ошибкой на второй машине - там apt update не срабатывало из-за forbidden в репозитории elastic, позже удалил этот реп. и все сработало*
 *скрины 5-3 см. ниже в 6*
 
  ---
