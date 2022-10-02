@@ -137,7 +137,7 @@ Playbook должен в качестве приветствия установ�
 - [ansible.cfg](ansible71/ansible.cfg)
 - [inventory.ini](ansible71/inventory.ini)
 - [playbook_dz71_7.yaml](ansible71/playbook_dz71_7.yaml)
-- [role7_install-nginx.zip](ansible71/role7_install-nginx.zip)
+- [role](ansible71/role7/install-nginx)
 
 ![task7 screen1](https://github.com/paive-media/netology_dz_6-5/blob/main/dz_ans_7-1_screen7-1.png "ansible role output 1")
 ![task7 screen2](https://github.com/paive-media/netology_dz_6-5/blob/main/dz_ans_7-1_screen7-2.png "ansible role output 2")
