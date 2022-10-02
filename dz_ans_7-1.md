@@ -58,6 +58,11 @@ ansible yac_debs -m ping
 2. Проверьте статус любого присутствующего на управляемой машине сервиса. 
 3. Создайте файл с содержимым "I like Linux" по пути /tmp/netology.txt
 
+**Файлы**
+- [ansible.cfg](ansible71/ansible.cfg)
+- [inventory.ini](ansible71/inventory.ini)
+
+
 ```sh
 ansible yac_debs -m apt -a "name=atop update_cache=yes" --private-key ~/.ssh/id_ed25519 -b
 
@@ -86,7 +91,18 @@ ansible yac_debs -m file -a "path=/tmp/netology.txt state=absent"
 2. Установить пакет tuned из стандартного репозитория вашей ОС. Запустить его как демон (конфигурационный файл systemd появится автоматически при установке). Добавить tuned в автозагрузку.
 3. Изменить приветствие системы (motd) при входе на любое другое по вашему желанию. Пожалуйста, в этом задании используйте переменную для задания приветствия. Переменную можно задавать любым удобным вам способом.
 
-*Приложите файлы с плейбуками и вывод выполнения.*
+**Файлы**
+- [ansible.cfg](ansible71/ansible.cfg)
+- [inventory.ini](ansible71/inventory.ini)
+- [playbook_dz71_51.yaml](ansible71/playbook_dz71_51.yaml)
+- [playbook_dz71_52.yaml](ansible71/playbook_dz71_52.yaml)
+- [playbook_dz71_53.yaml](ansible71/playbook_dz71_53.yaml)
+
+
+![task5 screen1](https://github.com/paive-media/netology_dz_6-5/blob/main/dz_ans_7-1_screen5-1.png "download & archiive")
+![task5 screen2](https://github.com/paive-media/netology_dz_6-5/blob/main/dz_ans_7-1_screen5-2.png "install & launch")
+
+*скрины 5-3 см. ниже в 6*
 
  ---
 
@@ -96,7 +112,14 @@ ansible yac_debs -m file -a "path=/tmp/netology.txt state=absent"
 
 Playbook должен в качестве приветствия установить ip адрес и hostname усправляемого хоста, пожелание хорошего дня системному администратору. 
 
-*Приложите файл с модифицированным плейбуком и вывод выполнения.*
+**Файлы**
+- [ansible.cfg](ansible71/ansible.cfg)
+- [inventory.ini](ansible71/inventory.ini)
+- [playbook_dz71_6.yaml](ansible71/playbook_dz71_6.yaml)
+
+
+![task6 screen1](https://github.com/paive-media/netology_dz_6-5/blob/main/dz_ans_7-1_screen6-1.png "change motd")
+![task6 screen2](https://github.com/paive-media/netology_dz_6-5/blob/main/dz_ans_7-1_screen6-1.png "change motd result")
 
  ---
 
@@ -110,4 +133,8 @@ Playbook должен в качестве приветствия установ�
 3. Открыть порт 80 (если необходимо), запустить сервер и добавить его в автозагрузку.
 4. Сделать проверку доступности веб сайта(ответ 200).
 
-*Приложите архив с ролью и вывод выполнения.*
+**Файлы**
+- [ansible.cfg](ansible71/ansible.cfg)
+- [inventory.ini](ansible71/inventory.ini)
+- [playbook_dz71_7.yaml](ansible71/playbook_dz71_7.yaml)
+- [role7_install-nginx.zip](ansible71/role7_install-nginx.zip)
