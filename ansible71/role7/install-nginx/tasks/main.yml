@@ -1,0 +1,50 @@
+---
+# tasks file for role7/install-nginx
+
+# - name: Output second disk serial number
+#   debug:
+#     var: ansible_facts
+
+- name: Install nginx 2 debs @ ya.cloud
+  apt:
+    name: nginx
+    state: present
+    update_cache: yes
+
+- name: Start nginx.service
+  service:
+    name: nginx
+    state: started
+  
+
+- name: Enable nginx.service
+  systemd:
+    name: nginx
+    enabled: yes
+
+- name: Create index.html using Jinja2
+  template:
+    src: index.j2
+    dest: /var/www/html/index.html
+  # notify: 
+  #   - role7/install-nginx: Restart nginx
+  #   - role7/install-nginx: Check page status
+  #   - role7/install-nginx: Show result
+
+- name: Restart nginx
+  service:
+    name: nginx
+    state: restarted
+
+- name: Check page status
+  uri:
+    url: "http://{{ ansible_host }}:80"
+    follow_redirects: none
+  register: _result
+  until: _result.status == 200
+  retries: 10
+  delay: 3
+
+- name: Show result
+  debug:
+    msg: "{{ _result }}"

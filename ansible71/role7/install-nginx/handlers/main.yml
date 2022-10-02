@@ -1,0 +1,20 @@
+---
+# handlers file for role7/install-nginx
+
+# - name: Restart nginx
+#   service:
+#     name: nginx
+#     state: restarted
+
+# - name: Check page status
+#   uri:
+#     url: "http://{{ ansible_host }}:80"
+#     follow_redirects: none
+#   register: _result
+#   until: _result.status == 200
+#   retries: 10
+#   delay: 3
+
+# - name: Show result
+#   debug:
+#     msg: "{{ _result }}"

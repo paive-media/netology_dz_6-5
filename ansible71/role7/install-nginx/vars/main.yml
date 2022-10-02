@@ -1,0 +1,10 @@
+---
+# vars file for role7/install-nginx
+
+
+cpu_count: '{{ ansible_facts.processor_vcpus }}'
+cpu_model: '{{ ansible_facts.product_name }}'
+
+ram_size: '{{ ansible_facts.memory_mb.real.total|filesizeformat }}'
+
+hdd_size: '{{ ansible_facts.devices.vda.size }}'
